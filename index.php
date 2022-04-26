@@ -128,7 +128,7 @@
     </table>
 
 
-    <button class="btn btn-primary align-self-end mb-2">Toggle Completed</button>
+    <button class="btn btn-primary btn__completed-toggle align-self-end mb-2">Toggle Completed</button>
 
     <table class="table table-striped table-bordered table-completed">
         <thead>

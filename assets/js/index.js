@@ -76,3 +76,13 @@ editModal.addEventListener("show.bs.modal", (e) => {
   editModal.querySelectorAll(".form-control")[1].value = title;
   editModal.querySelectorAll(".form-control")[2].value = body;
 });
+
+/**
+ * Completed Table Toggle
+ */
+const completedToggleButton = document.querySelector(".btn__completed-toggle");
+completedToggleButton.addEventListener("click", () => {
+  const completedTable = document.querySelector(".table-completed");
+  completedTable.style.display =
+    completedTable.style.display === "none" ? "block" : "none";
+});
