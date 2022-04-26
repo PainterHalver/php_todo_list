@@ -10,7 +10,7 @@
 <body class="container-sm d-flex flex-column align-items-stretch" style="max-width: 800px;">
     <div class='d-flex justify-content-between align-items-center'>
         <h1>To do list</h1>
-        <p>Time of day here</p>
+        <p class="clock"></p>
     </div>
 
     <!-- Add Button -->
