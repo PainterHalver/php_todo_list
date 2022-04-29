@@ -150,7 +150,7 @@
                     echo "<td><a href='#id-{$row['id']}' style='text-decoration:none;' data-bs-toggle='collapse' role='button'>{$row['title']}</a></td>";
                     echo "<td style='width:1%;white-space:nowrap;'>".$row['createdAt']."</td>";
                     echo "<td style='width:1%;white-space:nowrap;'> 
-                            <button type='button' class='btn btn-success btn-sm btn-complete' data-note-id='{$row['id']}'>Undo</button>
+                            <button type='button' class='btn btn-success btn-sm btn-complete' data-note-id='{$row['id']}'>&nbsp&nbsp Undo &nbsp&nbsp&nbsp</button>
                             <button type='button' class='btn btn-danger btn-sm' data-bs-toggle='modal' data-bs-target='#deleteModal' data-note-id='{$row['id']}'>Delete</button>
                             <button type='button' class='btn btn-primary btn-sm' data-bs-toggle='modal' data-bs-target='#editModal' data-note-id='{$row['id']}' data-title='{$row['title']}' data-body='{$row['body']}'>Edit</button>
                         </td>";
