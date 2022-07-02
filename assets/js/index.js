@@ -2,15 +2,7 @@
  * Display Current Time
  */
 const clock = document.querySelector(".clock");
-clock.innerHTML = new Date().toLocaleTimeString([], {
-  day: "numeric",
-  month: "short",
-  year: "numeric",
-  hour: "2-digit",
-  minute: "2-digit",
-  second: "2-digit",
-});
-setInterval(() => {
+const setClockTime = () => {
   clock.innerHTML = new Date().toLocaleTimeString([], {
     day: "numeric",
     month: "short",
@@ -19,7 +11,9 @@ setInterval(() => {
     minute: "2-digit",
     second: "2-digit",
   });
-}, 1000);
+}
+setClockTime();
+setInterval(setClockTime, 1000);
 
 /**
  * Complete Toggle Handlers
