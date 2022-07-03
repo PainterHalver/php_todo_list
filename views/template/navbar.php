@@ -2,6 +2,25 @@
     <h1>To do list</h1>
     <div>
         <div class="clock text-end"></div>
-        <div class="d-flex justify-content-end"><strong>Hello, Global user!</strong> &nbsp;<a href="views/login.php">Login</a><a class="ms-2" href="views/register.php">Register</a></div>
+        <div class="d-flex justify-content-end"><strong>Hello, Global user!</strong> &nbsp;<a href="/views/login.php">Login</a><a class="ms-2" href="/views/register.php">Register</a></div>
     </div>
 </div>
+
+<script>
+    /**
+     * Display Current Time
+     */
+    const clock = document.querySelector(".clock");
+    const setClockTime = () => {
+        clock.innerHTML = new Date().toLocaleTimeString([], {
+            day: "numeric",
+            month: "short",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+        });
+    }
+    setClockTime();
+    setInterval(setClockTime, 1000);
+</script>
