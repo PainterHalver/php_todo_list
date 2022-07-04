@@ -1,5 +1,5 @@
 <div class='d-flex justify-content-between align-items-center mb-3 pt-2'>
-    <h1>To do list</h1>
+    <h1 class="logo" style="cursor: pointer;">To do list</h1>
     <div>
         <div class="clock text-end"></div>
         <div class="d-flex justify-content-end">
@@ -32,4 +32,10 @@
     }
     setClockTime();
     setInterval(setClockTime, 1000);
+
+    // Click on logo to go to homepage
+    const logo = document.querySelector(".logo");
+    logo.addEventListener("click", () => {
+        window.location.href = "/";
+    });
 </script>

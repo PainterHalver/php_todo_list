@@ -1,5 +1,8 @@
 <?php
 session_start();
+
+$conf = include($_SERVER["DOCUMENT_ROOT"] . '/config.php');
+
 require_once("views/template/header.php");
 ?>
 
@@ -94,7 +97,8 @@ require_once("views/template/header.php");
     <tbody>
         <?php
         $db = new SQLite3("todo.db");
-        $result = $db->query("SELECT * FROM todos WHERE completed = 0 AND deleted = 0 ORDER BY createdAt DESC");
+        $username = $_SESSION['user'] ?? $conf['global_username'];
+        $result = $db->query("SELECT * FROM todos WHERE completed = 0 AND deleted = 0 AND username = '$username' ORDER BY createdAt DESC");
         while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
             $body = $row['body'] !== "" ? $row['body'] : 'Empty content!';
             echo "<tr>";
@@ -132,7 +136,8 @@ require_once("views/template/header.php");
     <tbody>
         <?php
         $db = new SQLite3("todo.db");
-        $result = $db->query("SELECT * FROM todos WHERE completed = 1 AND deleted = 0 ORDER BY createdAt DESC");
+        $username = $_SESSION['user'] ?? $conf['global_username'];
+        $result = $db->query("SELECT * FROM todos WHERE completed = 1 AND deleted = 0 AND username = '$username' ORDER BY createdAt DESC");
         while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
             $body = $row['body'] !== "" ? $row['body'] : 'Empty content!';
             echo "<tr>";
