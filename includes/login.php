@@ -2,8 +2,8 @@
 session_start();
 
 if (isset($_POST['username']) && isset($_POST['password'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $username = SQLite3::escapeString($_POST['username']);
+    $password = SQLite3::escapeString($_POST['password']);
     $passwordHash = md5($password);
 
     $db = new SQLite3("../todo.db");
