@@ -1,9 +1,14 @@
 <?php
+session_start();
+if (isset($_SESSION['user'])) {
+    header("Location: /");
+}
+
 require_once(__DIR__ . "/template/header.php");
 ?>
 
 <div class='d-flex justify-content-center align-items-center'>
-    <form action="/includes/login.php" method="POST" style="width: 35%;" oninput="confirmPassword.setCustomValidity(confirmPassword.value !== password.value ? 'Passwords do not match.' : '')">
+    <form action="/includes/register.php" method="POST" style="width: 35%;" oninput="confirmPassword.setCustomValidity(confirmPassword.value !== password.value ? 'Passwords do not match.' : '')">
         <div class="form-group mb-2">
             <label for="username" class="mb-1">Username</label>
             <input type="text" class="form-control" id="username" placeholder="Enter username" name="username" required>

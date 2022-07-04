@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once("views/template/header.php");
 ?>
 
