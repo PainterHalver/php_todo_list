@@ -2,13 +2,18 @@
 session_start();
 
 if (isset($_POST['username']) && isset($_POST['password'])) {
-    if ($_POST['username'] === "admin" && $_POST['password'] === "admin") {
-        $_SESSION['user'] = "admin";
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $passwordHash = md5($password);
+
+    $db = new SQLite3("../todo.db");
+
+    $result = $db->query("SELECT * FROM users WHERE username = '$username' AND password = '$passwordHash'");
+    if ($result->fetchArray()) {
+        $_SESSION['user'] = $username;
         header("Location: /");
     } else {
-        echo "Invalid username or password <br>";
+        echo "Wrong username or password.";
+        exit();
     }
-
-    echo "Username: " . $_POST['username'] . "<br>";
-    echo "Password: " . $_POST['password'] . "<br>";
 }

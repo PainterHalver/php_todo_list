@@ -14,16 +14,16 @@ require_once(__DIR__ . "/template/header.php");
             <input type="text" class="form-control" id="username" placeholder="Enter username" name="username" required>
             <div class="invalid-feedback user-exist">Username already exists</div>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-2">
             <label for="password" class="mb-1">Password</label>
             <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
         </div>
         <div class="form-group">
-            <label for="confirmPassword" class="mb-1">Password</label>
+            <label for="confirmPassword" class="mb-1">Confirm Password</label>
             <input type="password" class="form-control" id="confirmPassword" placeholder="confirmPassword" name="confirmPassword" required>
         </div>
         <div class="w-100 d-flex justify-content-center">
-            <button type="submit" class="btn btn-primary mt-4 submit-btn">Register</button>
+            <button type="button" class="btn btn-primary mt-4 submit-btn">Register</button>
         </div>
     </form>
 </div>
