@@ -100,15 +100,16 @@ require_once("views/template/header.php");
         $username = $_SESSION['user'] ?? $conf['global_username'];
         $result = $db->query("SELECT * FROM todos WHERE completed = 0 AND deleted = 0 AND username = '$username' ORDER BY createdAt DESC");
         while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
-            $body = $row['body'] !== "" ? $row['body'] : 'Empty content!';
+            $title = htmlentities($row['title'], ENT_QUOTES);
+            $body = $row['body'] !== "" ? htmlentities($row['body'], ENT_QUOTES) : 'Empty content!';
             echo "<tr>";
             echo "<th style='width:4%;'>" . $row['id'] . "</th>";
-            echo "<td><a href='#id-{$row['id']}' style='text-decoration:none;' data-bs-toggle='collapse' role='button'>{$row['title']}</a></td>";
+            echo "<td><a href='#id-{$row['id']}' style='text-decoration:none;' data-bs-toggle='collapse' role='button'>{$title}</a></td>";
             echo "<td style='width:1%;white-space:nowrap;'>" . $row['createdAt'] . "</td>";
             echo "<td style='width:1%;white-space:nowrap;'> 
                             <button type='button' class='btn btn-success btn-sm btn-complete' data-note-id='{$row['id']}'>Complete</button>
                             <button type='button' class='btn btn-danger btn-sm' data-bs-toggle='modal' data-bs-target='#deleteModal' data-note-id='{$row['id']}'>Delete</button>
-                            <button type='button' class='btn btn-primary btn-sm' data-bs-toggle='modal' data-bs-target='#editModal' data-note-id='{$row['id']}' data-title='{$row['title']}' data-body='{$row['body']}'>Edit</button>
+                            <button type='button' class='btn btn-primary btn-sm' data-bs-toggle='modal' data-bs-target='#editModal' data-note-id='{$row['id']}' data-title='{$title}' data-body='{$row['body']}'>Edit</button>
                         </td>";
             echo "</tr>";
             echo "<tr>";
@@ -139,15 +140,16 @@ require_once("views/template/header.php");
         $username = $_SESSION['user'] ?? $conf['global_username'];
         $result = $db->query("SELECT * FROM todos WHERE completed = 1 AND deleted = 0 AND username = '$username' ORDER BY createdAt DESC");
         while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
-            $body = $row['body'] !== "" ? $row['body'] : 'Empty content!';
+            $title = htmlentities($row['title'], ENT_QUOTES);
+            $body = $row['body'] !== "" ? htmlentities($row['body'], ENT_QUOTES) : 'Empty content!';
             echo "<tr>";
             echo "<th style='width:4%;'>" . $row['id'] . "</th>";
-            echo "<td><a href='#id-{$row['id']}' style='text-decoration:none;' data-bs-toggle='collapse' role='button'>{$row['title']}</a></td>";
+            echo "<td><a href='#id-{$row['id']}' style='text-decoration:none;' data-bs-toggle='collapse' role='button'>{$title}</a></td>";
             echo "<td style='width:1%;white-space:nowrap;'>" . $row['createdAt'] . "</td>";
             echo "<td style='width:1%;white-space:nowrap;'> 
                             <button type='button' class='btn btn-success btn-sm btn-complete' data-note-id='{$row['id']}'>&nbsp&nbsp Undo &nbsp&nbsp&nbsp</button>
                             <button type='button' class='btn btn-danger btn-sm' data-bs-toggle='modal' data-bs-target='#deleteModal' data-note-id='{$row['id']}'>Delete</button>
-                            <button type='button' class='btn btn-primary btn-sm' data-bs-toggle='modal' data-bs-target='#editModal' data-note-id='{$row['id']}' data-title='{$row['title']}' data-body='{$row['body']}'>Edit</button>
+                            <button type='button' class='btn btn-primary btn-sm' data-bs-toggle='modal' data-bs-target='#editModal' data-note-id='{$row['id']}' data-title='{$title}' data-body='{$row['body']}'>Edit</button>
                         </td>";
             echo "</tr>";
             echo "<tr>";
